@@ -7,6 +7,8 @@ Because JRPiCam works by invoking the raspistill software, it is important that 
 raspistill. The appropriate settings may be configured by running `raspi-config` in the terminal of your RPi. Further 
 instructions can be found [here] (https://www.raspberrypi.org/documentation/configuration/camera.md).
 
+To use JRPiCam in your project, just download and add the JRPiCam.jar file to your project's build path.
+
 The core component of JRPiCam is the Camera class, which can be instantiated as follows:
 ```
 //Create a Camera that saves images to the Pi's Pictures directory.
