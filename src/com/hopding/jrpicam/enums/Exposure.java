@@ -1,4 +1,4 @@
-package com.jrpicam;
+package com.hopding.jrpicam.enums;
 
 /**
  * Exposure option modes.

@@ -1,22 +1,22 @@
-package com.jrpicam;
+package com.hopding.jrpicam.enums;
 
 /**
- * Encoding type options.
+ * DRC mode options.
  * 
  * @author Andrew Dillon
  */
-public enum Encoding {
+public enum DRC {
 	
-	JPG,
+	OFF,
 	
-	BMP,
+	LOW,
 	
-	GIF,
+	MEDIUM,
 	
-	PNG;
+	HIGH;
 	
 	/**
-	 * Returns the enum in lowercase.
+	 * Returns enum as lowercase.
 	 */
 	public String toString() {
 		String id = name();
