@@ -1,6 +1,5 @@
-package com.jrpicam.examples;
+package com.hopding.jrpicam.examples;
 
-import java.io.File;
 import java.io.IOException;
 
 import com.hopding.jrpicam.RPiCamera;
@@ -10,11 +9,12 @@ import com.hopding.jrpicam.enums.Encoding;
 import com.hopding.jrpicam.exceptions.FailedToRunRaspistillException;
 
 /**
- * ShootStill is an example of how to take a still image using JRPiCam.
+ * ShootTimelapse is an example of how to take and save a 
+ * series of images with JRPiCam.
  * 
  * @author Andrew Dillon
  */
-public class ShootStill {
+public class ShootTimelapse {
 	
 	public static void main(String[] args) {
 		RPiCamera piCamera = null;
@@ -26,29 +26,34 @@ public class ShootStill {
 		} catch (FailedToRunRaspistillException e) {
 			e.printStackTrace();
 		}
-		//Take a still image and save it
+		//Take a still image, buffer, and save it
 		if (piCamera != null)
-			shootStill(piCamera);
+			shootTimelapse(piCamera);
 	}
 	
-	public static void shootStill(RPiCamera piCamera) {
+	public static void shootTimelapse(RPiCamera piCamera) {
 		piCamera.setAWB(AWB.AUTO); //Change Automatic White Balance setting to automatic 
 		piCamera.setDRC(DRC.OFF); //Turn off Dynamic Range Compression
 		piCamera.setContrast(100); //Set maximum contrast
 		piCamera.setSharpness(100); //Set maximum sharpness
 		piCamera.setQuality(100); //Set maximum quality
-		piCamera.setTimeout(1000); //Wait 1 second to take the image
 		piCamera.turnOnPreview(); //Turn on image preview
 		piCamera.setEncoding(Encoding.PNG); //Change encoding of images to PNG
-		//Take a 650x650 still image and save it as "/home/pi/Desktop/A Cool Picture.png"
+		//Take 10 650x650 still images, waiting 1 second between each capture.
+		//Save images as "/home/pi/Desktop/<frame_count>Timelapse Image.png"
 		try {
-			File image = piCamera.takeStill("A Cool Picture.png", 650, 650);
-			System.out.println("New PNG image saved to:\n\t" + image.getAbsolutePath());
+			piCamera.setWidth(650); //Set width of images to 650
+			piCamera.setHeight(650); //Set height of images to 650
+			piCamera.setTimeout(10000); //Continue taking images for 10 seconds
+			piCamera.timelapse(
+					true, //Block thread until timelapse is complete
+					"%04dTimelapse Image.png", //Image name, framecount will be placed in front of each image name
+					1000); //Wait 1 second between taking each image
+			System.out.println("New PNG images saved to:\n\t/home/pi/Desktop"); //Print out location of images
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-	
 }

@@ -341,10 +341,13 @@ public class RPiCamera {
 		if (wait)
 			p.waitFor();
 			
-		if (!options.get("latest").equals("")) {
+//		if (!options.get("latest").equals(null)) {
+		try {
 			return new File(options.get("latest")[1]);
-		} else
+		} catch (NullPointerException e) {
 			return null;
+		}
+//		} else
 	}
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////// End of Image Taking Methods /////////////////////////////
