@@ -237,6 +237,7 @@ public class RPiCamera {
 //		ImageReadParam param = reader.getDefaultReadParam();
 //		BufferedImage bi = reader.read(0, param);
 //		--------------------------------------------------------------------------
+		p.getInputStream().close();
 		return bi;
 	}
 	
