@@ -126,7 +126,7 @@ public class RPiCamera {
 		command.add("-h");
 		command.add("" + height);
 		for (Map.Entry<String, String[]> entry : options.entrySet()) {
-			if (entry.getValue() != null && entry.getKey() != "width" && entry.getKey() != "height") {
+			if (entry.getValue() != null && !"width".equals(entry.getKey())  && !"height".equals(entry.getKey())) {
 				for (String s : entry.getValue()) {
 					command.add(s);
 				}
