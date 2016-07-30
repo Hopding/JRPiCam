@@ -646,7 +646,7 @@ public class RPiCamera {
 	 * @param h An int specifying height of preview window.
 	 */
 	public void turnOnPreview(int x, int y, int w, int h) {
-		options.put("preview", new String[] { "-p", "" + x, ",", "" + y, ",", "" + w, ",", "" + h });
+		options.put("preview", new String[] { "-p", "" + x + "," + y + "," + w + "," + h });
 	}
 	
 	/**
