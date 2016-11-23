@@ -11,12 +11,12 @@ instructions can be found [here] (https://www.raspberrypi.org/documentation/conf
 To use JRPiCam in your project, just download and add the JRPiCam.jar file to your project's build path.
 
 The core component of JRPiCam is the RPiCamera class, which can be instantiated as follows:
-```
+```java
 //Create a Camera that saves images to the Pi's Pictures directory.
 RPiCamera piCamera = new RPiCamera("/home/pi/Pictures");
 ```
 Various options can be set on the camera by calling the appropriate methods:
-```
+```java
 //Set Camera to produce 500x500 images.
 piCamera.setWidth(500); 
 piCamera.setHeight(500);
@@ -38,18 +38,18 @@ piCamera.setToDefaults();
 ```
 Once the RPiCamera has been created, and the desired options have been adjusted, an image may be captured from the RPi Camera
 by called the takeStill() method:
-```
+```java
 piCamera.takeStill("An Awesome Pic.jpg");
 ```
 takeStill() requires a String to be passed in to save the image under. In this case, once the Camera has captured the image, it will be saved as "/home/pi/Pictures/AnAwesomePic.jpg" (since we've set the Camera to save images to the "/home/pi/Pictures" 
 directory).
 
 takeStill() also returns a File object that can be used to easily obtain and load the image after it has been saved to the Pi's memory. The following code captures an image, saves it, and then loads it into a BufferedImage:
-```
+```java
 BufferedImage image = ImageIO.read(piCamera.take("An Awesome Pic.jpg")));
 ```
 Images may also be loaded directly into a buffer within your application by calling the takeBufferedStill() method:
-```
+```java
 BufferedImage image = piCamera.takeBufferedStill();
 ```
 Capturing images this way is much faster than saving them to memory and then loading them into your application (as you would

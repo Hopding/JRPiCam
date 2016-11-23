@@ -1,0 +1,96 @@
+group 'hopding.jrpicam'
+version '1.0.1'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+// Don't include example classes in the javadoc
+javadoc {
+    exclude ('com/hopding/jrpicam/examples/**')
+}
+
+// Don't include the example classes in the library JAR
+jar {
+    exclude ('com/hopding/jrpicam/examples/**')
+}
+
+// Generate JAR with all classes from this project to use
+// for building the example JARs
+task fatJAR(type: Jar) {
+    appendix = "fat"
+    from sourceSets.main.output
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+// Demo View JAR file task
+task demoViewJAR(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Demo View',
+                'Implementation-Version': version,
+                'Main-Class': 'com.hopding.jrpicam.examples.DemoView'
+    }
+    baseName = 'demo-view'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with fatJAR
+}
+
+// Shoot Buffered Still JAR file task
+task shootBufferedStillJAR(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Shoot Buffered Still',
+                'Implementation-Version': version,
+                'Main-Class': 'com.hopding.jrpicam.examples.ShootBufferedStill'
+    }
+    baseName = 'shoot-buffered-still'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with fatJAR
+}
+
+// Shoot Still JAR file task
+task shootStillJAR(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'ShootStill',
+                'Implementation-Version': version,
+                'Main-Class': 'com.hopding.jrpicam.examples.ShootStill'
+    }
+    baseName = 'shoot-still'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with fatJAR
+}
+
+// Shoot Timelapse JAR file task
+task shootTimelapseJAR(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Shoot Time Lapse',
+                'Implementation-Version': version,
+                'Main-Class': 'com.hopding.jrpicam.examples.ShootTimelapse'
+    }
+    baseName = 'shoot-timelapse'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with fatJAR
+}
+
+// Task to generate/build the four example JAR files
+task buildExamples (dependsOn: [
+        'demoViewJAR',
+        'shootBufferedStillJAR',
+        'shootStillJAR',
+        'shootTimelapseJAR'])
+
+// JAR files to generate on build task being called
+artifacts {
+    archives jar,
+            demoViewJAR,
+            shootBufferedStillJAR,
+            shootStillJAR,
+            shootTimelapseJAR
+}
