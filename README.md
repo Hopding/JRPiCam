@@ -3,9 +3,7 @@ JRPiCam is a Java API that allows Java applications running on a Raspberry Pi to
 achieves this functionality by using the [`ProcessBuilder`](https://docs.oracle.com/javase/7/docs/api/java/lang/ProcessBuilder.html) class to run the native `raspistill` program on the RPi. This means that 
 JRPiCam has all the same functionality as `raspistill`, plus additional Java specific features.
 
-<div style="text-align:center">
-  <img src="http://hopding.com/img/pi-cam.jpg" width="500" alt="Raspberry Pi Camera Photo">
-</div>
+<img src="http://hopding.com/img/pi-cam.jpg" width="500" alt="Raspberry Pi Camera Photo">
 
 Because JRPiCam works by invoking the `raspistill` software, it is important that your RPi be properly configured to run 
 `raspistill`. The appropriate settings may be configured by running `raspi-config` in the terminal of your RPi. Further 
@@ -60,6 +58,9 @@ Capturing images this way is much faster than saving them to memory and then loa
 have to do with the `takeStill()` method), and is particularly useful if you don't want to save the photo in the RPi at all (perhaps you want to send it over a network and save it on a remote server).
 
 Additional code examples and information can be found in the `src/main/java/com/hopding/jrpicam/examples` directory and on the [JRPiCam wiki](https://github.com/Hopding/JRPiCam/wiki).
+
+# Javadoc
+The Javadoc for the project is hosted online [here](http://hopding.com/docs/jrpicam/). It can also be built manually with a Gradle task; see [below](https://github.com/Hopding/JRPiCam#building-the-project).
 
 # Examples
 The releases contain a number of example JARs (pre-built JARs of the classes in the `src/main/java/com/hopding/jrpicam/examples` directory) that can be executed on the RPi's terminal:
