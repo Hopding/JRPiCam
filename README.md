@@ -3,7 +3,9 @@ JRPiCam is a Java API that allows Java applications running on a Raspberry Pi to
 achieves this functionality by using the [`ProcessBuilder`](https://docs.oracle.com/javase/7/docs/api/java/lang/ProcessBuilder.html) class to run the native `raspistill` program on the RPi. This means that 
 JRPiCam has all the same functionality as `raspistill`, plus additional Java specific features.
 
-<img src="http://hopding.com/img/pi-cam.jpg" width="500" alt="Raspberry Pi Camera Photo" align="middle">
+<div style="text-align:center">
+  <img src="http://hopding.com/img/pi-cam.jpg" width="500" alt="Raspberry Pi Camera Photo">
+</div>
 
 Because JRPiCam works by invoking the `raspistill` software, it is important that your RPi be properly configured to run 
 `raspistill`. The appropriate settings may be configured by running `raspi-config` in the terminal of your RPi. Further 
