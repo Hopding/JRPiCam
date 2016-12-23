@@ -1102,19 +1102,45 @@ public class RPiCamera {
 	}
 	
 	//ADD A METHOD SUPPORTING THE --mode OPTION, WILL NEED AN ENUM PROBLY
-	
+
+	/**
+	 * Replaces output pattern (%d) in save file name with DateTime (MonthDayHourMinSec).
+     * E.g.
+     *<pre>{@code
+     * RPiCamera camera = new RPiCamera(/home/pi/Pictures);
+     * camera.setDateTimeOn();
+     * camera.takeStill("APicture%d.jpg", 500, 500);
+     *}</pre>
+     * Would produce a file named "APicture1223140756" if executed on Dec 23rd, at 14:07:56.
+     */
 	public void setDateTimeOn() {
 		options.put("datetime", new String[] { "-dt" });
 	}
-	
+
+    /**
+     * Disables effects of {@link #setDateTimeOn()}. This is default state of {@link RPiCamera}.
+     */
 	public void setDateTimeOff() {
 		options.put("datetime", null);
 	}
-	
+
+    /**
+     * Replace output pattern (%d) with unix timestamp (seconds since 1970)
+     * E.g.
+     *<pre>{@code
+     * RPiCamera camera = new RPiCamera(/home/pi/Pictures);
+     * camera.setTimestampOn();
+     * camera.takeStill("APicture%d.jpg", 500, 500);
+     *}</pre>
+     * Would produce a file named "APictureXXX", where XXX is the number of seconds since 1970.
+     */
 	public void setTimestampOn() {
 		options.put("timestamp", new String[] { "-ts" });
 	}
-	
+
+    /**
+     * Disables effects of {@link #setTimestampOn()}. This is default state of {@link RPiCamera}.
+     */
 	public void setTimestampOff() {
 		options.put("timestamp", null);
 	}
