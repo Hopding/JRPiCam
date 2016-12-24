@@ -31,13 +31,13 @@ import com.hopding.jrpicam.exceptions.FailedToRunRaspistillException;
  * <pre>
  *{@code
  * // Directory to save pictures to
- * String saveDir = "/home/pi/Pictures"; 
+ * String saveDir = "/home/pi/Pictures";
+ *
  * // Create RPiCamera instance
- * RPiCamera camera = new RPiCamera(saveDir);
- * // Set width property of RPiCamera.
- * camera.setWidth(150);
- * // Set height property of RPiCamera.
- * camera.setHeight(150);
+ * RPiCamera camera = new RPiCamera(saveDir)
+ *     .setWidth(150)   // Set width property of RPiCamera.
+ *     .setHeight(150); // Set height property of RPiCamera.
+ *
  * // Take a picture and save it as "/home/pi/Pictures/APicture.jpg"
  * camera.takeStill("APicture.jpg"); 
  *}
@@ -104,9 +104,9 @@ public class RPiCamera {
 	 *{@code
 	 * // Create an RPiCamera instance using default constructor, which sets the 
 	 * // save directory to "/home/pi/Pictures".
-	 * RPiCamera piCamera = new RPiCamera();
-	 * // Change encoding from JPEG to PNG
-	 * piCamera.setEncoding(Encoding.PNG);
+	 * RPiCamera piCamera = new RPiCamera()
+	 *     .setEncoding(Encoding.PNG); // Change encoding from JPEG to PNG
+     *
 	 * // Take a 500x500 PNG image and save it as "/home/pi/Pictures/AStillImage.png"
 	 * piCamera.takeStill("AStillImage.png", 500, 500);
 	 *}
@@ -157,11 +157,11 @@ public class RPiCamera {
 	 * Usage Example:
 	 * <pre>
 	 *{@code
-	 * // Create an RPiCamera instance using default constructor, which sets the 
+	 * // Create an RPiCamera instance using default constructor, which sets the
 	 * // save directory to "/home/pi/Pictures".
-	 * RPiCamera piCamera = new RPiCamera();
-	 * // Change encoding from JPEG to PNG
-	 * piCamera.setEncoding(Encoding.PNG);
+	 * RPiCamera piCamera = new RPiCamera()
+	 *     .setEncoding(Encoding.PNG); // Change encoding from JPEG to PNG
+     *
 	 * // Take a PNG image and save it as "/home/pi/Pictures/AStillImage.png"
 	 * piCamera.takeStill("AStillImage.png");
 	 *}
@@ -188,9 +188,9 @@ public class RPiCamera {
 	 *{@code
 	 * // Create an RPiCamera instance using default constructor, which sets the 
 	 * // save directory to "/home/pi/Pictures".
-	 * RPiCamera piCamera = new RPiCamera();
-	 * // Change encoding from JPEG to PNG
-	 * piCamera.setEncoding(Encoding.PNG);
+	 * RPiCamera piCamera = new RPiCamera()
+	 *     .setEncoding(Encoding.PNG); // Change encoding from JPEG to PNG
+     *
 	 * // Take a 500x500 PNG image and store it in a BufferedImage
 	 * BufferedImage buffImg = piCamera.takeBufferedStill(500, 500);
 	 *}
@@ -251,15 +251,15 @@ public class RPiCamera {
 	 * <p>
 	 * Usage Example:
 	 * <pre>
-	 {@code
-	  // Create an RPiCamera instance using default constructor, which sets the 
-	  // save directory to "/home/pi/Pictures".
-	  RPiCamera piCamera = new RPiCamera();
-	  // Change encoding from JPEG to PNG
-	  piCamera.setEncoding(Encoding.PNG);
-	  // Take a PNG image and store it in a BufferedImage
-	  BufferedImage buffImg = piCamera.takeBufferedStill();
-	 }
+	 *{@code
+	 * // Create an RPiCamera instance using default constructor, which sets the
+	 * // save directory to "/home/pi/Pictures".
+	 * RPiCamera piCamera = new RPiCamera()
+	 *     .setEncoding(Encoding.PNG); // Change encoding from JPEG to PNG
+     *
+	 * // Take a PNG image and store it in a BufferedImage
+	 * BufferedImage buffImg = piCamera.takeBufferedStill();
+	 *}
 	 * </pre>
 	 * @return A BufferedImage containing the image.
 	 * @throws IOException
@@ -293,25 +293,25 @@ public class RPiCamera {
 	 * <p>
 	 * Usage Example:
 	 * <pre>
-	 {@code
-	  // Creating and setting up an RPiCamera
-	  RPiCamera piCamera = new RPiCamera();
-	  piCamera.turnOffPreview();
-	  piCamera.setTimeout(1);
-	  
-	  // Capture an image and store its RGB values, not preserving the border
-	  int[] rgbVals = piCamera.takeStillAsRGB(500, 500, false);
-	  
-	  // Create a BufferedImage from the stored RGB values
-	  BufferedImage image = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
-	  WritableRaster raster = (WritableRaster) image.getData();
-	  raster.setPixels(0, 0, 500, 500, rgbVals);
-	  image.setData(raster);
-	  
-	  // Write the BufferedImage to a file as a JPEG
-	  File file = new File("/home/pi/Desktop/A Cool Image.jpg");
-	  ImageIO.write(image, "jpg", file);
-	  }
+	 *{@code
+	 * // Creating and setting up an RPiCamera
+	 * RPiCamera piCamera = new RPiCamera()
+	 *      .turnOffPreview()
+	 *      .setTimeout(1);
+	 *
+	 * // Capture an image and store its RGB values, not preserving the border
+	 * int[] rgbVals = piCamera.takeStillAsRGB(500, 500, false);
+	 *
+	 * // Create a BufferedImage from the stored RGB values
+	 * BufferedImage image = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
+	 * WritableRaster raster = (WritableRaster) image.getData();
+	 * raster.setPixels(0, 0, 500, 500, rgbVals);
+	 * image.setData(raster);
+	 *
+	 * // Write the BufferedImage to a file as a JPEG
+	 * File file = new File("/home/pi/Desktop/A Cool Image.jpg");
+	 * ImageIO.write(image, "jpg", file);
+	 * }
 	 * </pre>
 	 * 
 	 * @param width An int specifying the width of the image to take (ideally a multiple of 16).
@@ -424,25 +424,25 @@ public class RPiCamera {
 	 * <p>
 	 * Usage Example:
 	 * <pre>
-	 {@code
-	  // Creating and setting up an RPiCamera
-	  RPiCamera piCamera = new RPiCamera();
-	  piCamera.turnOffPreview();
-	  piCamera.setTimeout(1);
-	  
-	  // Capture an image and store its RGB values, not preserving the border
-	  int[] rgbVals = piCamera.takeStillAsRGB(500, 500, false);
-	  
-	  // Create a BufferedImage from the stored RGB values
-	  BufferedImage image = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
-	  WritableRaster raster = (WritableRaster) image.getData();
-	  raster.setPixels(0, 0, 500, 500, rgbVals);
-	  image.setData(raster);
-	  
-	  // Write the BufferedImage to a file as a JPEG
-	  File file = new File("/home/pi/Desktop/A Cool Image.jpg");
-	  ImageIO.write(image, "jpg", file);
-	  }
+	 *{@code
+	 * // Creating and setting up an RPiCamera
+	 * RPiCamera piCamera = new RPiCamera()
+	 *     .turnOffPreview()
+	 *     .setTimeout(1);
+	 *
+	 * // Capture an image and store its RGB values, not preserving the border
+	 * int[] rgbVals = piCamera.takeStillAsRGB(500, 500, false);
+	 *
+	 * // Create a BufferedImage from the stored RGB values
+	 * BufferedImage image = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
+	 * WritableRaster raster = (WritableRaster) image.getData();
+	 * raster.setPixels(0, 0, 500, 500, rgbVals);
+	 * image.setData(raster);
+	 *
+	 * // Write the BufferedImage to a file as a JPEG
+	 * File file = new File("/home/pi/Desktop/A Cool Image.jpg");
+	 * ImageIO.write(image, "jpg", file);
+	 *}
 	 * </pre>
 	 * 
 	 * @param keepPadding A boolean indicating whether or not to preserve the padding on an image.
@@ -459,15 +459,15 @@ public class RPiCamera {
 	/**
 	 * Take a series of timelapsed photos for the specified time frame and save them under the 
 	 * specified filename to the RPiCamera's save directory. Length of time to timelapse for may 
-	 * be specified with the setTimeout() method.
+	 * be specified with the {@link #setTimeout(int)} method.
 	 * <p>
 	 * THIS METHOD WILL BLOCK THE THREAD UNTIL THE TIMELAPSE IS COMPLETE IF boolean wait ARGUMENT 
 	 * IS SET TO true.
 	 * <p>
 	 * Most recent image in the series may be appended to the file specified in the 
-	 * setLinkLatestImage() method. If this property is set, timelapse() will return a File
+	 * {@link #setLinkLatestImage(boolean, String)} method. If this property is set, timelapse() will return a File
 	 * object representing the full path to the file the timelapsed photos are being linked to.
-	 * Otherwise, timelapse() will return null.
+	 * Otherwise, will return null.
 	 * <p>
 	 * When passing in a String for the photo's name, it is important to include "%04d" in the name.
 	 * This is where the frame count number will be included in the file name. If the name does not 
@@ -478,13 +478,10 @@ public class RPiCamera {
 	 * {@code
 	 * // Create an RPiCamera instance using default constructor, which sets the 
 	 * // save directory to "/home/pi/Pictures".
-	 * RPiCamera piCamera = new RPiCamera();
-	 * // Change encoding from JPEG to PNG
-	 * piCamera.setEncoding(Encoding.PNG);
-	 * // Set period for timelapse to run at 10 seconds
-	 * piCamera.setTimeout(10000); // 10,000 milliseconds == 10 seconds
-	 * // Set RPiCamera to link images to "linkFile.png"
-	 * piCamera.setLinkLatestImage(true, "/home/pi/Pictures/linkfile.png");
+	 * RPiCamera piCamera = new RPiCamera()
+     *     .setEncoding(Encoding.PNG) // Change encoding from JPEG to PNG
+	 *     .setTimeout(10000)         // Set period for timelapse to run at 10 seconds
+	 *     .setLinkLatestImage(true, "/home/pi/Pictures/linkfile.png"); // Set RPiCamera to link images to "linkFile.png"
 	 * // Begin timelapse
 	 * piCamera.timelapse(
 	 * 	true, // Block thread until timelapse is completed
@@ -978,7 +975,7 @@ public class RPiCamera {
 	
 	/**
 	 * Sets width of images taken by RPiCamera. Note that this setting
-	 * can be overriden by the takeStill() and takeBufferedStill() methods.
+	 * can be overriden by the {@link #takeStill(String, int, int)}  and {@link #takeBufferedStill(int, int)} methods.
 	 * 
 	 * @param width An int specifying the width.
 	 */
@@ -989,7 +986,7 @@ public class RPiCamera {
 	
 	/**
 	 * Sets height of images taken by the RPiCamera. Note that this settings
-	 * can be overriden by the takeStill() and takeBufferedStill() methods.
+     * can be overriden by the {@link #takeStill(String, int, int)}  and {@link #takeBufferedStill(int, int)} methods.
 	 *
 	 * @param height An int specifying the height.
 	 */
@@ -1141,8 +1138,8 @@ public class RPiCamera {
 	 * Replaces output pattern (%d) in save file name with DateTime (MonthDayHourMinSec).
      * E.g.
      *<pre>{@code
-     * RPiCamera camera = new RPiCamera(/home/pi/Pictures);
-     * camera.setDateTimeOn();
+     * RPiCamera camera = new RPiCamera()
+     *    .setDateTimeOn();
      * camera.takeStill("APicture%d.jpg", 500, 500);
      *}</pre>
      * Would produce a file named "APicture1223140756" if executed on Dec 23rd, at 14:07:56.
@@ -1164,8 +1161,8 @@ public class RPiCamera {
      * Replace output pattern (%d) with unix timestamp (seconds since 1970)
      * E.g.
      *<pre>{@code
-     * RPiCamera camera = new RPiCamera(/home/pi/Pictures);
-     * camera.setTimestampOn();
+     * RPiCamera camera = new RPiCamera()
+     *     .setTimestampOn();
      * camera.takeStill("APicture%d.jpg", 500, 500);
      *}</pre>
      * Would produce a file named "APictureXXX", where XXX is the number of seconds since 1970.
