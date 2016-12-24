@@ -46,6 +46,7 @@ BufferedImage image = piCamera.takeBufferedStill();
 Capturing images this way is much faster than saving them to memory and then loading them into your application (as you would
 have to do with the `takeStill()` method), and is particularly useful if you don't want to save the photo in the RPi at all (perhaps you want to send it over a network and save it on a remote server).
 
+# Wiki
 Additional code examples and information can be found in the `src/main/java/com/hopding/jrpicam/examples` directory and on the [JRPiCam wiki](https://github.com/Hopding/JRPiCam/wiki).
 
 # Javadoc
