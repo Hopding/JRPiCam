@@ -13,8 +13,7 @@ import com.hopding.jrpicam.enums.Encoding;
 import com.hopding.jrpicam.exceptions.FailedToRunRaspistillException;
 
 /**
- * ShootBufferedStill is an example of how to take and buffer a
- *  still image using JRPiCam.
+ * ShootBufferedStill is an example of how to take and buffer a still image using JRPiCam.
  * 
  * @author Andrew Dillon
  */
@@ -22,34 +21,33 @@ public class ShootBufferedStill {
 	
 	public static void main(String[] args) {
 		RPiCamera piCamera = null;
-		//Attempt to create an instance of RPiCamera, will fail
-		//if raspistill is not properly installed
+		// Attempt to create an instance of RPiCamera, will fail if raspistill is not properly installed
 		try {
 			String saveDir = "/home/pi/Desktop";
 			piCamera = new RPiCamera(saveDir);
 		} catch (FailedToRunRaspistillException e) {
 			e.printStackTrace();
 		}
-		//Take a still image, buffer, and save it
+		// Take a still image, buffer, and save it
 		if (piCamera != null)
 			shootBufferedStill(piCamera);
 	}
 	
 	public static void shootBufferedStill(RPiCamera piCamera) {
-		piCamera.setAWB(AWB.AUTO); //Change Automatic White Balance setting to automatic 
-		piCamera.setDRC(DRC.OFF); //Turn off Dynamic Range Compression
-		piCamera.setContrast(100); //Set maximum contrast
-		piCamera.setSharpness(100); //Set maximum sharpness
-		piCamera.setQuality(100); //Set maximum quality
-		piCamera.setTimeout(1000); //Wait 1 second to take the image
-		piCamera.turnOnPreview(); //Turn on image preview
-		piCamera.setEncoding(Encoding.PNG); //Change encoding of images to PNG
-		//Take a 650x650 still image, buffer it, and save it as "/home/pi/Desktop/A Cool Picture.png"
+		piCamera.setAWB(AWB.AUTO)       // Change Automatic White Balance setting to automatic
+			.setDRC(DRC.OFF)            // Turn off Dynamic Range Compression
+			.setContrast(100)           // Set maximum contrast
+			.setSharpness(100)          // Set maximum sharpness
+			.setQuality(100)            // Set maximum quality
+			.setTimeout(1000)           // Wait 1 second to take the image
+			.turnOnPreview()            // Turn on image preview
+			.setEncoding(Encoding.PNG); // Change encoding of images to PNG
+		// Take a 650x650 still image, buffer it, and save it as "/home/pi/Desktop/A Cool Picture.png"
 		try {
-			BufferedImage buffImg = piCamera.takeBufferedStill(650, 650); //Take image and store in BufferedImage
-			File saveFile = new File("/home/pi/Desktop/A Cool Picture.png"); //Create file to save image to
-			ImageIO.write(buffImg, "png", saveFile); //Save image to file
-			System.out.println("New PNG image saved to:\n\t" + saveFile.getAbsolutePath()); //Print out location of image
+			BufferedImage buffImg = piCamera.takeBufferedStill(650, 650); // Take image and store in BufferedImage
+			File saveFile = new File("/home/pi/Desktop/A Cool Picture.png"); // Create file to save image to
+			ImageIO.write(buffImg, "png", saveFile); // Save image to file
+			System.out.println("New PNG image saved to:\n\t" + saveFile.getAbsolutePath()); // Print out location of image
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
