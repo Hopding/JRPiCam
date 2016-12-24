@@ -51,14 +51,17 @@ import com.hopding.jrpicam.exceptions.FailedToRunRaspistillException;
  */
 public class RPiCamera {
 	
-	String						prevCommand;
-	String						saveDir;
-	HashMap<String, String[]>	options	= new HashMap<String, String[]>();
-	ProcessBuilder				pb;
-	Process						p;
+	private String						prevCommand;
+	private String						saveDir;
+	private HashMap<String, String[]>	options	= new HashMap<String, String[]>();
+	private ProcessBuilder				pb;
+	private Process						p;
+	private static final int DEFAULT_WIDTH  = 500;
+	private static final int DEFAULT_HEIGHT = 500;
 								
 	/**
-	 * Sets RPiCamera's save directory to "/home/pi/Pictures".
+	 * Creates new RPiCamera. The resulting RPiCamera's save directory will be set to
+     * "/home/pi/Pictures" and will have a default image width and height of 500.
 	 * @throws FailedToRunRaspistillException 
 	 */
 	public RPiCamera() throws FailedToRunRaspistillException {
@@ -66,7 +69,8 @@ public class RPiCamera {
 	}
 	
 	/**
-	 * Sets RPiCamera's save directory.
+	 * Creates new RPiCamera and sets its save directory. The resulting RPiCamera will have a
+     * default image width and height of 500.
 	 * 
 	 * @param saveDir A String specifying the directory for RPiCamera to save images.
 	 * @throws FailedToRunRaspistillException 
@@ -85,6 +89,9 @@ public class RPiCamera {
 							+ "raspistill to function. Please ensure it is installed and configured"
 							+ "on your system.");
 		}
+		// Set default width and height of images
+        this.setWidth(DEFAULT_WIDTH);
+		this.setHeight(DEFAULT_HEIGHT);
 	}
 	
 ///////////////////////////////////////////////////////////////////////////////
