@@ -157,17 +157,17 @@ public class DemoView {
 		btnTake.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					piCamera.turnOffPreview();
-					piCamera.setAWB(AWB.valueOf(((String) awbComboBox.getSelectedItem()).toUpperCase()));
-					piCamera.setDRC(DRC.valueOf(((String) drcComboBox.getSelectedItem()).toUpperCase()));
-					piCamera.setExposure(Exposure.valueOf(((String) expComboBox.getSelectedItem()).toUpperCase()));
-					piCamera.setEncoding(Encoding.valueOf(((String) encComboBox.getSelectedItem()).toUpperCase()));
-					piCamera.setWidth(575);
-					piCamera.setHeight(565);
-					piCamera.setContrast(contrastSlider.getValue());
-					piCamera.setQuality(qualitySlider.getValue());
-					piCamera.setSharpness(sharpnessSlider.getValue());
-					piCamera.setTimeout(Integer.parseInt(txtTimeout.getText()));
+					piCamera.turnOffPreview()
+						.setAWB(AWB.valueOf(((String) awbComboBox.getSelectedItem()).toUpperCase()))
+					    .setDRC(DRC.valueOf(((String) drcComboBox.getSelectedItem()).toUpperCase()))
+					    .setExposure(Exposure.valueOf(((String) expComboBox.getSelectedItem()).toUpperCase()))
+					    .setEncoding(Encoding.valueOf(((String) encComboBox.getSelectedItem()).toUpperCase()))
+					    .setWidth(575)
+					    .setHeight(565)
+					    .setContrast(contrastSlider.getValue())
+					    .setQuality(qualitySlider.getValue())
+					    .setSharpness(sharpnessSlider.getValue())
+					    .setTimeout(Integer.parseInt(txtTimeout.getText()));
 					buffImg = piCamera.takeBufferedStill();
 					System.out.println("Executed this command:\n\t" + piCamera.getPrevCommand());
 					ImageIcon icon = new ImageIcon(buffImg);
