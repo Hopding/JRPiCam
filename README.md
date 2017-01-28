@@ -10,7 +10,7 @@ Because JRPiCam works by invoking the `raspistill` software, it is important tha
 instructions can be found [here](https://www.raspberrypi.org/documentation/configuration/camera.md).
 
 # Using JRPiCam
-To use JRPiCam in your project, just download and unzip the most recent [release](https://github.com/Hopding/JRPiCam/releases/tag/v1.1.0), then add the `jrpicam-1.1.0.jar` file to your project's build path.
+To use JRPiCam in your project, just download and unzip the most recent [release](https://github.com/Hopding/JRPiCam/releases/tag/v1.1.1), then add the `jrpicam-1.1.1.jar` file to your project's build path.
 
 The core component of JRPiCam is the `RPiCamera` class, which can be instantiated as follows:
 ```java
@@ -55,26 +55,26 @@ The Javadoc for the project is hosted online [here](http://hopding.com/docs/jrpi
 # Examples
 The releases contain a number of example JARs (pre-built JARs of the classes in the `src/main/java/com/hopding/jrpicam/examples` directory) that can be executed on the RPi's terminal:
 
-* `demo-view-1.1.0.jar`
-* `shoot-buffered-still-1.1.0.jar`
-* `shoot-still-1.1.0.jar`
-* `shoot-timelapse-1.1.0.jar`
+* `demo-view-1.1.1.jar`
+* `shoot-buffered-still-1.1.1.jar`
+* `shoot-still-1.1.1.jar`
+* `shoot-timelapse-1.1.1.jar`
 
-`demo-view-1.1.0.jar` runs a demo gui program that illustrates some functions of JRPiCam. The rest of the examples show how to do things like take a still image, save it, load it into a buffer, and take a series of images.
+`demo-view-1.1.1.jar` runs a demo gui program that illustrates some functions of JRPiCam. The rest of the examples show how to do things like take a still image, save it, load it into a buffer, and take a series of images.
 
-To run them, just download and unzip the most recent [release](https://github.com/Hopding/JRPiCam/releases/tag/v1.1.0), open it in a terminal, and run the following:
+To run them, just download and unzip the most recent [release](https://github.com/Hopding/JRPiCam/releases/tag/v1.1.1), open it in a terminal, and run the following:
 ```
 $ java -jar examples/[jar name]
 ```
 for example:
 ```
-$ java -jar examples/demo-view-1.1.0.jar
+$ java -jar examples/demo-view-1.1.1.jar
 ```
 
 # Building the Project
 JRPiCam is structured as a Gradle project. It contains tasks to build the library JAR, the example JARs, and the Javadoc. To build the project, you must first clone or download the project repository, and open a terminal therein. Then, assuming you're using Windows' Powershell or Unix's Bash:
 
-* To build the main library JAR (`jrpicam-1.1.0.jar`):
+* To build the main library JAR (`jrpicam-1.1.1.jar`):
 ```
 $ ./gradlew jar
 ```
@@ -86,9 +86,4 @@ $ ./gradlew buildExamples
 ```
 $ ./gradlew javadoc
 ```
-* It is also possible to generate the main library JAR and the example JARs at the same time:
-```
-$ ./gradlew build
-```
-
 The JAR files will be located in the `build/libs` directory. The Javadoc will be located at `build/docs/javadoc`.
