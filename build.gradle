@@ -1,7 +1,8 @@
 group 'hopding.jrpicam'
-version '1.1.0'
+version '1.1.1'
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 
@@ -85,12 +86,3 @@ task buildExamples (dependsOn: [
         'shootBufferedStillJAR',
         'shootStillJAR',
         'shootTimelapseJAR'])
-
-// JAR files to generate on build task being called
-artifacts {
-    archives jar,
-            demoViewJAR,
-            shootBufferedStillJAR,
-            shootStillJAR,
-            shootTimelapseJAR
-}
