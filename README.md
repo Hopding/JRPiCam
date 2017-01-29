@@ -1,4 +1,4 @@
-[![Release](https://jitpack.io/v/User/Repo.svg)]
+[![Release](https://jitpack.io/v/Hopding/JRPiCam.svg)]
 (https://jitpack.io/#Hopding/JRPiCam)
 # JRPiCam
 JRPiCam is a Java API that allows Java applications running on a Raspberry Pi to access the Raspberry Pi Camera. JRPiCam
