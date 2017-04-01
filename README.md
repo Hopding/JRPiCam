@@ -1,5 +1,4 @@
-[![Release](https://jitpack.io/v/Hopding/JRPiCam.svg)]
-(https://jitpack.io/#Hopding/JRPiCam)
+[![Release](https://jitpack.io/v/Hopding/JRPiCam.svg)](https://jitpack.io/#Hopding/JRPiCam)
 # JRPiCam
 JRPiCam is a Java API that allows Java applications running on a Raspberry Pi to access the Raspberry Pi Camera. JRPiCam
 achieves this functionality by using the [`ProcessBuilder`](https://docs.oracle.com/javase/7/docs/api/java/lang/ProcessBuilder.html) class to run the native `raspistill` program on the RPi. This means that 
